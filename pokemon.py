@@ -1,52 +1,103 @@
 import random
 
-pikachu_heald = 80
-squirtle_heald = 90
+PIKACHU_VIDA_INICIAL = 80
+SQUIRTLE_VIDA_INICIAL = 90
 
-bola_voltio = 10
-onda_trueno = 11
+pikachu_vida_actual = PIKACHU_VIDA_INICIAL
+squirtle_vida_actual = SQUIRTLE_VIDA_INICIAL
 
-placaje = 10
-pistola_agua = 12
-burbuja = 9
+while pikachu_vida_actual > 0 and squirtle_vida_actual > 0:
 
-
-while pikachu_heald > 0 and squirtle_heald > 0:
 
     print("Turno de pikachu!")
     ataque_pikachu = random.randint(1, 2)
     if ataque_pikachu == 1:
         print("Pikachu ataca con Bola Voltio")
-        squirtle_heald -= 10
+        squirtle_vida_actual -= 10
     else:
         print("Pikachu ataca con Onda Trueno")
-        squirtle_heald -= 11
+        squirtle_vida_actual -= 11
 
-    print("La vida del pikachu es: {}\n La vida de squirtle es: {}".format(pikachu_heald, squirtle_heald))
+    barra_de_vida_pikachu = int(pikachu_vida_actual * 10 / PIKACHU_VIDA_INICIAL)
+    print("Pikachu  {}hp [{}{}] ".format(pikachu_vida_actual, "#" * barra_de_vida_pikachu,
+                                       " " * (10 - barra_de_vida_pikachu)))
 
+    barra_de_vida_squirtle = int(squirtle_vida_actual * 10 / SQUIRTLE_VIDA_INICIAL)
+    print("Squirtle  {}hp [{}{}]".format(squirtle_vida_actual, "#" * barra_de_vida_squirtle,
+                                       " " * (10 - barra_de_vida_squirtle)))
+
+    if pikachu_vida_actual <= 0:
+        print("Squirtle gana!\nPikachu queda fuera de combate.")
+
+        barra_de_vida_pikachu = int(pikachu_vida_actual * 10 / PIKACHU_VIDA_INICIAL)
+        print("Pikachu  0hp [{}{}] ".format("#" * barra_de_vida_pikachu,
+                                            " " * (10 - barra_de_vida_pikachu)))
+
+        barra_de_vida_squirtle = int(squirtle_vida_actual * 10 / SQUIRTLE_VIDA_INICIAL)
+        print("Squirtle  {}hp [{}{}]".format(squirtle_vida_actual, "#" * barra_de_vida_squirtle,
+                                             " " * (10 - barra_de_vida_squirtle)))
+        break
+    if squirtle_vida_actual <= 0:
+        print("Pikachu gana!\nSquirtle queda fuera de combate.")
+
+        barra_de_vida_pikachu = int(pikachu_vida_actual * 10 / PIKACHU_VIDA_INICIAL)
+        print("Pikachu  {}hp [{}{}] ".format(pikachu_vida_actual, "#" * barra_de_vida_pikachu,
+                                             " " * (10 - barra_de_vida_pikachu)))
+
+        barra_de_vida_squirtle = int(squirtle_vida_actual * 10 / SQUIRTLE_VIDA_INICIAL)
+        print("Squirtle  0hp [{}{}]".format("#" * barra_de_vida_squirtle, " " * (10 - barra_de_vida_squirtle)))
+        break
     input("Enter para continuar...")
+
+    print("\n")
 
     ataque_squirtle = None
     print("Turno de squirtle!")
-    while ataque_squirtle != 1 and squirtle_heald != 2 and squirtle_heald != 3:
-        ataque_squirtle= int(input("¿Ataque a realizar? [1]Placaje,[2]Pistola, [3]Burbuja?"))
+    while ataque_squirtle != "1" and ataque_squirtle != "2" and ataque_squirtle!= "3":
+        ataque_squirtle= input("¿Ataque a realizar? [1]Placaje,[2]Pistola, [3]Burbuja?")
 
-        if ataque_squirtle == 1:
+        if ataque_squirtle == "1":
             print("Squirtle ataca con Placaje")
-            pikachu_heald -= 10
-        elif ataque_squirtle == 2:
+            pikachu_vida_actual -= 10
+        elif ataque_squirtle == "2":
             print("Squirtle ataca con Pistola Agua")
-            pikachu_heald -= 12
-        elif ataque_squirtle == 3:
+            pikachu_vida_actual -= 12
+        elif ataque_squirtle == "3":
             print("Squirtle ataca con Burbuja")
-            pikachu_heald -= 9
+            pikachu_vida_actual -= 9
 
-    print("La vida del pikachu es: {}\n La vida de squirtle es: {}".format(pikachu_heald, squirtle_heald))
+    if pikachu_vida_actual <= 0:
+        print("Squirtle gana!\nPikachu queda fuera de combate.")
 
+        barra_de_vida_pikachu = int(pikachu_vida_actual * 10 / PIKACHU_VIDA_INICIAL)
+        print("Pikachu  0hp [{}{}] ".format( "#" * barra_de_vida_pikachu,
+                                             " " * (10 - barra_de_vida_pikachu)))
+
+        barra_de_vida_squirtle = int(squirtle_vida_actual * 10 / SQUIRTLE_VIDA_INICIAL)
+        print("Squirtle  {}hp [{}{}]".format(squirtle_vida_actual, "#" * barra_de_vida_squirtle,
+                                             " " * (10 - barra_de_vida_squirtle)))
+        break
+    if squirtle_vida_actual <= 0:
+        print("Pikachu gana!\nSquirtle queda fuera de combate.")
+
+        barra_de_vida_pikachu = int(pikachu_vida_actual * 10 / PIKACHU_VIDA_INICIAL)
+        print("Pikachu  {}hp [{}{}] ".format(pikachu_vida_actual, "#" * barra_de_vida_pikachu,
+                                             " " * (10 - barra_de_vida_pikachu)))
+
+        barra_de_vida_squirtle = int(squirtle_vida_actual * 10 / SQUIRTLE_VIDA_INICIAL)
+        print("Squirtle  0hp [{}{}]".format("#" * barra_de_vida_squirtle, " " * (10 - barra_de_vida_squirtle)))
+        break
+
+    barra_de_vida_pikachu = int(pikachu_vida_actual * 10 / PIKACHU_VIDA_INICIAL)
+    print("Pikachu  {}hp [{}{}] ".format(pikachu_vida_actual, "#" * barra_de_vida_pikachu,
+                                         " " * (10 - barra_de_vida_pikachu)))
+
+    barra_de_vida_squirtle = int(squirtle_vida_actual * 10 / SQUIRTLE_VIDA_INICIAL)
+    print("Squirtle  {}hp [{}{}]".format(squirtle_vida_actual, "#" * barra_de_vida_squirtle,
+                                         " " * (10 - barra_de_vida_squirtle)))
 
     input("Enter para continuar...")
+    print("\n")
 
-    if pikachu_heald == 0:
-        print("Squirtle gana!\nPikachu queda fuera de combate.")
-    if squirtle_heald == 0:
-        print("Pikachu gana!\nSquirtle queda fuera de combate.")
+
+
